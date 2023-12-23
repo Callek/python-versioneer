@@ -1,5 +1,4 @@
-The Versioneer
-==============
+# The Versioneer
 
 **Latest Version**:  [![Latest Version][pypi-image]][pypi-url]
 [![Github Release][github-release-image]][github-release-url]
@@ -22,7 +21,7 @@ The Versioneer
 **License**: (Public Domain) ![Unlicense][license-img]
 
 * like a rocketeer, but for versions!
-* https://github.com/python-versioneer/python-versioneer
+* <https://github.com/python-versioneer/python-versioneer>
 * Brian Warner
 * Compatible with: Python 3.8, 3.9, 3.10, 3.11 and pypy3
 * Experimental support for Python 3.12.
@@ -42,29 +41,31 @@ is intended to allow you to skip this step and simplify the process of upgrading
 ### Vendored mode
 
 * `pip install versioneer` to somewhere in your $PATH
-   * A [conda-forge recipe](https://github.com/conda-forge/versioneer-feedstock) is
-     available, so you can also use `conda install -c conda-forge versioneer`
+  * A [conda-forge recipe](https://github.com/conda-forge/versioneer-feedstock) is
+    available, so you can also use `conda install -c conda-forge versioneer`
 * add a `[tool.versioneer]` section to your `pyproject.toml` or a
   `[versioneer]` section to your `setup.cfg` (see [Install](INSTALL.md))
-   * Note that you will need to add `tomli; python_version < "3.11"` to your
-     build-time dependencies if you use `pyproject.toml`
+  * Note that you will need to add `tomli; python_version < "3.11"` to your
+    build-time dependencies if you use `pyproject.toml`
 * run `versioneer install --vendor` in your source tree, commit the results
 * verify version information with `python setup.py version`
 
 ### Build-time dependency mode
 
 * `pip install versioneer` to somewhere in your $PATH
-   * A [conda-forge recipe](https://github.com/conda-forge/versioneer-feedstock) is
-     available, so you can also use `conda install -c conda-forge versioneer`
+  * A [conda-forge recipe](https://github.com/conda-forge/versioneer-feedstock) is
+    available, so you can also use `conda install -c conda-forge versioneer`
 * add a `[tool.versioneer]` section to your `pyproject.toml` or a
   `[versioneer]` section to your `setup.cfg` (see [Install](INSTALL.md))
 * add `versioneer` (with `[toml]` extra, if configuring in `pyproject.toml`)
   to the `requires` key of the `build-system` table in `pyproject.toml`:
+
   ```toml
   [build-system]
   requires = ["setuptools", "versioneer[toml]"]
   build-backend = "setuptools.build_meta"
   ```
+
 * run `versioneer install --no-vendor` in your source tree, commit the results
 * verify version information with `python setup.py version`
 
@@ -169,9 +170,11 @@ of bugs fixed in various releases.
 The installer adds the following text to your `__init__.py` to place a basic
 version in `YOURPROJECT.__version__`:
 
-    from ._version import get_versions
-    __version__ = get_versions()['version']
-    del get_versions
+```python
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
+```
 
 ## Styles
 
@@ -265,7 +268,6 @@ a different virtualenv), so this can be surprising.
 this one, but upgrading to a newer version of setuptools should probably
 resolve it.
 
-
 ## Updating Versioneer
 
 To upgrade your project to a new release of Versioneer, do the following:
@@ -305,7 +307,7 @@ number of intermediate scripts.
 To make Versioneer easier to embed, all its code is dedicated to the public
 domain. The `_version.py` that it creates is also in the public domain.
 Specifically, both are released under the "Unlicense", as described in
-https://unlicense.org/.
+<https://unlicense.org/>.
 
 <!--Latest Version-->
 [pypi-image]: https://img.shields.io/pypi/v/versioneer.svg
