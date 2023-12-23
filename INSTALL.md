@@ -126,14 +126,18 @@ To versioneer-enable your project:
 * 5: add a `import versioneer` to your setup.py, and add the following
   arguments to the setup() call:
 
-        version=versioneer.get_version(),
-        cmdclass=versioneer.get_cmdclass(),
+  ```python
+  version=versioneer.get_version(),
+  cmdclass=versioneer.get_cmdclass(),
+  ```
 
   If your project uses a special `cmdclass`, pass that `cmdclass` as
   a parameter. For example:
 
-        from numpy.distutils.core import numpy_cmdclass
-        cmdclass=versioneer.get_cmdclass(numpy_cmdclass),
+  ```python
+  from numpy.distutils.core import numpy_cmdclass
+  cmdclass=versioneer.get_cmdclass(numpy_cmdclass),
+  ```
 
 * 6: commit these changes to your VCS. To make sure you won't forget,
   `versioneer install` will mark everything it touched for addition using

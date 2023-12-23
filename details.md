@@ -1,3 +1,4 @@
+# Details
 
 ## What environments does Versioneer support?
 
@@ -12,7 +13,6 @@ Sometimes you use the VCS tools to make a tarball directly, like `git archive`, 
 If all these methods fail, Versioneer attempts to pull a version string from the name of the parent directory, since tarballs are frequently built this way. This environment is called "from-parentdir". This can provide the main version string, but not a full-revision hash. "dirty" is always False.
 
 If even that fails, Versioneer will either report a version of "0+unknown", and will signal an error.
-
 
 ## What does get_version() return?
 
@@ -79,7 +79,6 @@ The renderer function is controlled by a configuration value called `style`. You
 | `git-describe` | `TAG[-DISTANCE-gSHORTHASH][-dirty]`, equivalent to `git describe --tags --dirty --always`. The distance and shorthash are only included if the commit is not tagged. If nothing was tagged, this will be the short revisionid, plus "-dirty" if dirty. |
 | `git-describe-long` | `TAG-DISTANCE-gSHORTHASH[-dirty]`, equivalent to `git describe --tags --dirty --always --long`. The distance and shorthash are included unconditionally. As with `git-describe`, if nothing was tagged, this will be the short revisionid, possibly with "-dirty". |
 
-
 ## Pieces used by from-vcs
 
 Internally, the from-vcs function is expected to return the following values. The renderer uses these to compute the version string.
@@ -103,10 +102,10 @@ The from-keywords mode will only produce `exact-tag` and `full-revisionid`. If t
 
 (note: this is not yet accurate)
 
-| key          | file                | keywords          | git-describe             | parentdir |
-| ---          | ------------------- | ----------------- | ------------------------ | --------- |
-| pep440       | TAG[+DIST.gHASH]    | TAG or 0.unknown? | TAG[+DIST.gHASH[.dirty]] | TAG or ?  |
-| pep440-pre   | TAG[.post0.devDIST] | TAG or ?          | TAG[.post0.devDIST]      | TAG or ?  |
-| pep440-old   | TAG[.postDIST]      | TAG or ?          | TAG[.postDIST[.dev0]]    | TAG or ?  |
-| git-describe | TAG[-DIST-gHASH]    | TAG or ?          | TAG[-DIST-gHASH][-dirty] | TAG or ?  |
-| long         | TAG-DIST-gHASH      | TAG-gHASH or ?    | TAG-DIST-gHASH[-dirty]   | ?         |
+| key          | file                | keywords          | git-describe               | parentdir |
+| ---          | ------------------- | ----------------- | -------------------------  | --------- |
+| pep440       | TAG[+DIST.gHASH]    | TAG or 0.unknown? | `TAG[+DIST.gHASH[.dirty]]` | TAG or ?  |
+| pep440-pre   | TAG[.post0.devDIST] | TAG or ?          | `TAG[.post0.devDIST]`      | TAG or ?  |
+| pep440-old   | TAG[.postDIST]      | TAG or ?          | `TAG[.postDIST[.dev0]]`    | TAG or ?  |
+| git-describe | TAG[-DIST-gHASH]    | TAG or ?          | `TAG[-DIST-gHASH][-dirty]` | TAG or ?  |
+| long         | TAG-DIST-gHASH      | TAG-gHASH or ?    | `TAG-DIST-gHASH[-dirty]`   | ?         |

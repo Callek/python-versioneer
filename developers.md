@@ -1,3 +1,4 @@
+# Developer Information
 
 ## To add support for a new VCS
 
@@ -11,7 +12,6 @@ So, you want to extend Versioneer to support your favorite version control syste
 * 6: add a line to .travis.yml to execute your `test_NEWVCS.py` upon checkins
 
 Then file a pull request!
-
 
 ## To make a release
 
