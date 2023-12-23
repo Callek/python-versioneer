@@ -1,21 +1,37 @@
 The Versioneer
 ==============
 
+**Latest Version**:  [![Latest Version][pypi-image]][pypi-url]
+[![Github Release][github-release-image]][github-release-url]
+
+**Latest Version @ 3rd Party Packagers**: [![Latest Version Anaconda main][anaconda-org-main-image]][anaconda-org-main-url]
+[![Latest Version Conda Forge][conda-forge-image]][conda-forge-url]
+
+**Support Python Versions**: ![Python Versions][python-versions-img]
+
+**Downloads**: ![Pypi Downloads][pypi-downloads-img]
+![Conda Downloads Anaconda Main][downloads-conda-main-img]
+![Conda Downloads Anaconda Main][downloads-conda-forge-img]
+
+**Community**: [![Matrix][matrix-image]][matrix-url]
+[![Gitter.im][gitter-image]][gitter-url]
+![Github Stars][github-stars-img]
+
+**Build Status**: [![Github Workflow][github-workflow-tox-img]][github-workflow-tox-url]
+
+**License**: (Public Domain) ![Unlicense][license-img]
+
 * like a rocketeer, but for versions!
 * https://github.com/python-versioneer/python-versioneer
 * Brian Warner
-* License: Public Domain (Unlicense)
 * Compatible with: Python 3.8, 3.9, 3.10, 3.11 and pypy3
 * Experimental support for Python 3.12.
-* [![Latest Version][pypi-image]][pypi-url]
-* [![Build Status][travis-image]][travis-url]
 
 This is a tool for managing a recorded version number in setuptools-based
 python projects. The goal is to remove the tedious and error-prone "update
 the embedded version string" step from your release process. Making a new
 release should be as easy as recording a new tag in your version-control
 system, and maybe making new tarballs.
-
 
 ## Quick Install
 
@@ -291,8 +307,32 @@ domain. The `_version.py` that it creates is also in the public domain.
 Specifically, both are released under the "Unlicense", as described in
 https://unlicense.org/.
 
+<!--Latest Version-->
 [pypi-image]: https://img.shields.io/pypi/v/versioneer.svg
 [pypi-url]: https://pypi.python.org/pypi/versioneer/
-[travis-image]:
-https://img.shields.io/travis/com/python-versioneer/python-versioneer.svg
-[travis-url]: https://travis-ci.com/github/python-versioneer/python-versioneer
+[github-release-image]: https://img.shields.io/github/v/release/python-versioneer/python-versioneer?logo=github
+[github-release-url]: https://github.com/python-versioneer/python-versioneer/releases
+<!--Latest Version @ external-->
+[anaconda-org-main-image]: https://img.shields.io/conda/v/main/versioneer
+[anaconda-org-main-url]: https://anaconda.org/main/versioneer
+[conda-forge-image]: https://img.shields.io/conda/v/conda-forge/versioneer
+[conda-forge-url]: https://anaconda.org/conda-forge/versioneer
+<!--Python Supports-->
+[python-versions-img]: https://img.shields.io/pypi/pyversions/versioneer
+<!--Downloads-->
+[pypi-downloads-img]: https://img.shields.io/pypi/dm/versioneer?label=pypi
+[downloads-conda-main-img]: https://img.shields.io/conda/dn/main/versioneer?label=conda%7Cmain
+[downloads-conda-forge-img]: https://img.shields.io/conda/dn/conda-forge/versioneer?label=conda%7Cconda-forge
+<!--Community-->
+[matrix-image]: https://img.shields.io/badge/Matrix%20-chat-brightgreen?style=plastic&logo=matrix
+[matrix-url]: https://matrix.to/#/#python-versioneer:mozilla.org
+[gitter-image]: https://img.shields.io/badge/Gitter%20-chat-brightgreen?style=plastic&logo=gitter
+[gitter-url]: https://matrix.to/#/#python-versioneer:gitter.im
+[github-stars-img]: https://img.shields.io/github/stars/python-versioneer/python-versioneer?logo=github
+<!--Build Status-->
+[github-workflow-tox-img]:
+https://img.shields.io/github/actions/workflow/status/python-versioneer/python-versioneer/tox.yml?logo=github
+[github-workflow-tox-url]:
+https://github.com/python-versioneer/python-versioneer/actions/workflows/tox.yml?query=branch%3Amaster
+<!--License-->
+[license-img]: https://img.shields.io/github/license/python-versioneer/python-versioneer
