@@ -77,3 +77,64 @@
 ** DONE running 'setup.py build' from a git-archive tree
    - need version_from_expanded_variable() in versioneer.py too, not just
      _version.py
+
+* Supported Upstream Versions
+** setuptools
+*** 33.1.1 - py2.6,2.7 .. 3.3 -> 3.6, pypy
+*** 36.2.4 ->  + pypy3 [@latest=5.4] [@python=>3.5.3]
+*** 37.0.0 -> remove py2.6
+*** 39.2.0 -> remove py3.3
+*** 40.5.0 -> + py3.7
+*** 40.9.0 ->  pypy2 ==> pypy2.7-6.0
+*** 41.0.1 ->  pypy3 ==> pypy3.5-6.0
+*** 41.1.0 -> pypy2.7-6.0 ==> pypy, pypy3.5-6.0 ==> pypy3
+*** 41.5.0 -> + py3.8 <!--versioneer is here -->
+*** 44.0.0 -> - py3.4
+*** 45.0.0 -> -py2.7, -pypy
+*** 50.3.2 -> +py3.9
+*** 51.0.0 -> -py3.5
+*** 58.4.0 -> +py3.10
+*** 59.7.0 -> -py3.6,  pypy3 ==> pypy-3.7
+*** 62.4.0 -> py3.11{dev} (auto selects released ver when ready)
+*** 65.4.1 -> -pypy-3.7, +pypy-3.19
+*** 65.7.0 -> py3.12{dev} (auto selects released ver when ready)
+*** 68.1.0 -> -py3.7
+** Python Shipped Setuptools
+*** <last checked Dec 27-2023>
+*** 41.2.0 -> shipped in py3.8 {beta4}
+*** 47.1.0 -> shipped in py3.8.4
+           -> shipped in py3.9 {beta4}
+*** 49.2.1 -> shipped in py3.8.6
+           -> shipped in py3.9.0
+*** 56.0.0 -> shipped in py3.8.10
+           -> shipped in py3.9.5
+           -> shipped in py3.10.0 {beta1}
+*** 57.4.0 -> shipped in py3.9.7
+           -> shipped in py3.10 {rc2}
+*** 58.1.0 -> shipped in py3.9.8
+           -> shipped in py3.10.1
+*** 63.2.0 -> shipped in py3.10.6
+*** 65.5.0 -> shipped in py3.10.9
+           -> shipped in py3.11.0
+*** --- -> no setuptools in bundle in py3.12
+*** <last checked 69.0.3>
+** cx_Freeze
+*** <https://cx-freeze.readthedocs.io/en/latest/versions.html>
+*** 5.1.1 -> py2.7 (no longer supported)
+*** 6.0 -> py3.5 to 3.7 (no longer supported)
+*** 6.1 to 6.3 -> py3.5 to py3.8 (no longer supported)
+*** 6.4 to 6.8 -> py3.6 to py3.9 (no longer supported)
+*** 6.9 to 6.13 -> py3.6 to py3.10 (supported)
+*** 6.14 and 6.15 -> py3.7 to py3.11 (supported)
+*** 6.16 -> py 3.8 to py3.12 (supported)
+*** <last checked 6.15.12>
+** py2exe
+*** <https://github.com/py2exe/py2exe>
+*** 0.10.0.2 -> py3.5 to py3.8
+*** 0.10.1.0 -> +py3.9, -py3.5
+*** 0.11.0.0 -> +py3.10
+*** 0.11.1.0 -> -py3.6
+*** 0.12.0.0 -> deprecate setup.py/distutils.setup and add "Introduce the new py2exe.freeze API"
+*** 0.13.0.0 -> +py3.11, -py3.7, "Remove build_exe command line interface."
+    "Note: contrary to what was announced in 0.12.x, this release does not remove the setup.py py2exe interface"
+*** <last checked 0.13.0.1>
