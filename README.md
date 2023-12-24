@@ -1,5 +1,7 @@
 # The Versioneer
 
+## Badges
+
 **Latest Version**:  [![Latest Version][pypi-image]][pypi-url]
 [![Github Release][github-release-image]][github-release-url]
 
@@ -20,9 +22,12 @@
 
 **License**: (Public Domain) ![Unlicense][license-img]
 
+## What is versioneer
+
 * like a rocketeer, but for versions!
 * <https://github.com/python-versioneer/python-versioneer>
-* Brian Warner
+* Original Author: Brian Warner
+* Current Maintainer: Justin Wood (@Callek)
 * Compatible with: Python 3.8, 3.9, 3.10, 3.11 and pypy3
 * Experimental support for Python 3.12.
 
