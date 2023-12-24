@@ -250,29 +250,6 @@ pip to let Versioneer work correctly.
 Versioneer-0.16 and earlier only looked for a `.git` directory next to the
 `setup.cfg`, so subprojects were completely unsupported with those releases.
 
-### Editable installs with setuptools <= 18.5
-
-`setup.py develop` and `pip install --editable .` allow you to install a
-project into a virtualenv once, then continue editing the source code (and
-test) without re-installing after every change.
-
-"Entry-point scripts" (`setup(entry_points={"console_scripts": ..})`) are a
-convenient way to specify executable scripts that should be installed along
-with the python package.
-
-These both work as expected when using modern setuptools. When using
-setuptools-18.5 or earlier, however, certain operations will cause
-`pkg_resources.DistributionNotFound` errors when running the entrypoint
-script, which must be resolved by re-installing the package. This happens
-when the install happens with one version, then the egg_info data is
-regenerated while a different version is checked out. Many setup.py commands
-cause egg_info to be rebuilt (including `sdist`, `wheel`, and installing into
-a different virtualenv), so this can be surprising.
-
-[Bug #83](https://github.com/python-versioneer/python-versioneer/issues/83) describes
-this one, but upgrading to a newer version of setuptools should probably
-resolve it.
-
 ## Updating Versioneer
 
 To upgrade your project to a new release of Versioneer, do the following:
