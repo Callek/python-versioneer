@@ -602,14 +602,15 @@ class SetuptoolsUnpacked(_Invocations, unittest.TestCase):
         unpacked = self.make_setuptools_extension_unpacked()
         linkdir = self.make_linkdir()
         venv = self.make_venv("setuptools-unpacked-pip-wheel-extension")
+        # XXX pip 22.1 introduced --config-settings (for pep 517 backends)
+        # XXX pip 25.3 removed --build-option
+        # --plat-name necessary to ensure the platform name is stable for this test
+        config_setting_name = "--config-settings=--build-option" if os.environ.get("VERSIONEER_TEST_PIP_SPEC", "pip>=20") == "pip>=20" else "--build-option"
         self.run_in_venv(
             venv, unpacked,
             "pip", "wheel", "--wheel-dir", "wheelhouse",
             "--no-index", "--find-links", linkdir,
-            # XXX pip 22.1 introduced --config-settings (for pep 517 backends)
-            # XXX pip 25.3 removed --build-option
-            # --plat-name necessary to ensure the platform name is stable for this test
-            f"--build-option=--plat-name={self.make_binary_wheel_platform_name()}",
+            f"{config_setting_name}=--plat-name={self.make_binary_wheel_platform_name()}",
             "."
         )
         created = os.path.join(unpacked, "wheelhouse", wheelname)
