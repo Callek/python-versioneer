@@ -10,7 +10,10 @@ import re
 from unittest import mock
 from pathlib import Path
 
-from pkg_resources import parse_version
+try:
+    from pkg_resources import parse_version
+except ImportError:
+    from packaging.version import parse as parse_version
 
 sys.path.insert(0, "src")
 import common

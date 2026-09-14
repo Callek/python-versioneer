@@ -115,6 +115,19 @@ class _Invocations(common.Common):
         v = self.check_in_venv(venv)
         self.assertEqual(v["demolib"], "1.0")
 
+    def develop_supports_find_links(self, venv):
+        # setuptools 80 reduced "setup.py develop" to a thin wrapper around
+        # "pip install -e ." and dropped its dependency-resolution options.
+        # Probe for the option itself rather than a version number so this
+        # tracks the actual behavior change.
+        out = self.run_in_venv(
+            venv, venv, "python", "-c",
+            "from setuptools.command.develop import develop;"
+            "print(any(o[0] == 'find-links=' for o in develop.user_options))",
+        )
+        lines = out.strip().splitlines()
+        return bool(lines) and lines[-1].strip() == "True"
+
     # "demolib" has a version of 1.0 and is built with setuptools
     # "demoapp2-setuptools" is v2.0, uses setuptools, and depends on demolib
 
@@ -368,12 +381,20 @@ class SetuptoolsRepo(_Invocations, unittest.TestCase):
         indexdir = self.make_empty_indexdir()
         repodir = self.make_setuptools_repo()
         venv = self.make_venv("setuptools-repo-develop")
-        # "setup.py develop" takes --find-links and --index-url but not
-        # --no-index
-        self.run_in_venv(venv, repodir,
-                         "python", "setup.py", "develop",
-                         "--index-url", indexdir, "--find-links", linkdir,
-                         )
+        if self.develop_supports_find_links(venv):
+            # "setup.py develop" takes --find-links and --index-url but not
+            # --no-index
+            self.run_in_venv(venv, repodir,
+                             "python", "setup.py", "develop",
+                             "--index-url", indexdir, "--find-links", linkdir,
+                             )
+        else:
+            # setuptools >= 80 delegates "develop" to "pip install -e .", so
+            # drive pip directly to keep resolving demolib from linkdir. The
+            # editable install still builds through the setuptools backend.
+            self.run_in_venv(venv, repodir,
+                             "pip", "install", "--editable", ".",
+                             "--no-index", "--find-links", linkdir)
         self.check_in_venv_withlib(venv)
 
     def test_develop_subproject(self):
@@ -381,12 +402,20 @@ class SetuptoolsRepo(_Invocations, unittest.TestCase):
         indexdir = self.make_empty_indexdir()
         projectdir = self.make_setuptools_repo_subproject()
         venv = self.make_venv("setuptools-repo-develop-subproject")
-        # "setup.py develop" takes --find-links and --index-url but not
-        # --no-index
-        self.run_in_venv(venv, projectdir,
-                         "python", "setup.py", "develop",
-                         "--index-url", indexdir, "--find-links", linkdir,
-                         )
+        if self.develop_supports_find_links(venv):
+            # "setup.py develop" takes --find-links and --index-url but not
+            # --no-index
+            self.run_in_venv(venv, projectdir,
+                             "python", "setup.py", "develop",
+                             "--index-url", indexdir, "--find-links", linkdir,
+                             )
+        else:
+            # setuptools >= 80 delegates "develop" to "pip install -e .", so
+            # drive pip directly to keep resolving demolib from linkdir. The
+            # editable install still builds through the setuptools backend.
+            self.run_in_venv(venv, projectdir,
+                             "pip", "install", "--editable", ".",
+                             "--no-index", "--find-links", linkdir)
         self.check_in_venv_withlib(venv)
 
     def test_egg(self):
